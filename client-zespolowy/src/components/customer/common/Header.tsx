@@ -14,9 +14,9 @@ export const Header = observer(() => {
     return (
         <>
 
-            <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between py-2 mb- border-bottom" style={{ backgroundColor: '#ecdefb'}}>
+            <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between py-2 mb- border-bottom" style={{ backgroundColor: '#ecdefb' }}>
                 <Link to="/" className="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-                    <h1 className="new-color">BeautyShop</h1>
+                    <h1 className="new-color mx-3">BeautyShop</h1>
                 </Link>
 
                 <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">

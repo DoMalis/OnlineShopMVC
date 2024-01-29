@@ -62,12 +62,12 @@ export const ProductDetailsPage = observer(() => {
         return (
             Product.isOnSale(product) ? (
                 <>
-                    <h5 className="text-decoration-line-through">Net Price: {product.price} zł</h5>
-                    <h5>Discounted net price: {Product.getDiscountedPrice(product)} zł </h5>
+                    <h3 className="text-decoration-line-through">Net Price: {product.price} zł</h3>
+                    <h2>Net Price: <b className="new-color"> {Product.getDiscountedPrice(product)} zł  </b></h2>
                 </>
             ) : (
                 <>
-                    <h5>Net Price: {product.price} zł</h5>
+                    <h2>Net Price: <b className="new-color">{product.price} zł</b> </h2>
                 </>
             )
         )
@@ -119,11 +119,11 @@ export const ProductDetailsPage = observer(() => {
                     </h5>
 
                     <h5>Tax rate:
-                        {product.taxRate === -1 ? <b className="new-color">Tax free</b> : <b className="new-color">{product.taxRate} %</b>}
+                        {product.taxRate === -1 ? <b className="new-color"> Tax free</b> : <b className="new-color"> {product.taxRate} %</b>}
                     </h5>
                     <div className="col mt-5 d-flex flex-column justify-content-center">
 
-                        {renderGrossPrice()}
+                        {renderPrice()}
 
                         {product.status === ProductStatus.Available &&
                             <div className="row align-items-center justify-content-between mt-4">

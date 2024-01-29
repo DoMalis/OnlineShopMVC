@@ -17,7 +17,7 @@ namespace Persistence
             if (!isCustomerRoleExists)
                 await roleManager.CreateAsync(new IdentityRole(StaticUserRoles.CUSTOMER));
 
-            if (!isAdminRoleExists) 
+            if (!isAdminRoleExists)
                 await roleManager.CreateAsync(new IdentityRole(StaticUserRoles.ADMIN));
 
             if (userManager.Users.Any()) return;
@@ -116,70 +116,48 @@ namespace Persistence
             // ProductExperts
             var productExperts = new List<ProductExpert>
             {
-                new() { 
-                    FirstName = "John", 
-                    LastName = "Doe", 
+                new() {
+                    FirstName = "John",
+                    LastName = "Doe",
                     Email = "john.doe@example.com",
                     PhoneNumber = "555666777" },
-                new() { 
-                    FirstName = "Jane", 
-                    LastName = "Smith", 
+                new() {
+                    FirstName = "Jane",
+                    LastName = "Smith",
                     Email = "jane.smith@example.com",
                     PhoneNumber = "555666777" }
             };
             context.ProductExperts.AddRange(productExperts);
-            
+
             // Categories
             var categories = new List<Category>
             {
                 new() {
-                    Name = "Snacks",
+                    Name = "Face",
                     Status = CategoryStatus.Visible,
                     ParentCategory = null
                 }
             };
 
-            categories.Add(new Category {
-                Name = "Chips",
+            categories.Add(new Category
+            {
+                Name = "Eyes",
                 Status = CategoryStatus.Visible,
                 ParentCategory = categories[0]
             });
-
-            categories.Add(new Category {
-                Name = "Sweets",
-                Status = CategoryStatus.Visible,
-                ParentCategory = categories[0]
-            });
-
-            categories.Add(new Category {
-                Name = "Fruit Snack",
-                Status = CategoryStatus.Visible,
-                ParentCategory = categories[0]
-            });
-
-            categories.Add(new Category {
-                Name = "Potato Chips",
+            categories.Add(new Category
+            {
+                Name = "Mascara",
                 Status = CategoryStatus.Visible,
                 ParentCategory = categories[1]
             });
-
-            categories.Add(new Category {
-                Name = "Corn Chips",
+            categories.Add(new Category
+            {
+                Name = "Lips",
                 Status = CategoryStatus.Visible,
-                ParentCategory = categories[1]
+                ParentCategory = categories[0]
             });
 
-            categories.Add(new Category {
-                Name = "Chocolates",
-                Status = CategoryStatus.Visible,
-                ParentCategory = categories[2]
-            });
-
-            categories.Add(new Category {
-                Name = "Lolipops",
-                Status = CategoryStatus.Visible,
-                ParentCategory = categories[2]
-            });
 
             context.Categories.AddRange(categories);
 
@@ -187,20 +165,20 @@ namespace Persistence
             var products = new List<Product>
             {
                 new() {
-                    Name = "Product 1",
+                    Name = "Mini KUSH High Volumizing Mascara",
                     Description = "Description for Product 1",
                     Price = 19.99m,
-                    TaxRate = 23, 
-                    Category = categories[7],
+                    TaxRate = 23,
+                    Category = categories[1],
                     PhotoId = null,
                     CreatedAt = DateTime.UtcNow,
                     ModificationDate = DateTime.UtcNow,
-                    Status = ProductStatus.Available, 
+                    Status = ProductStatus.Available,
                     ProductExpert = productExperts[0],
                     ProductInfo = new ProductInfo
                     {
                         CurrentStock = 100,
-                        TotalSold = 0 
+                        TotalSold = 0
                     }
                 },
                 new() {
@@ -208,7 +186,7 @@ namespace Persistence
                     Description = "Description for Product 2",
                     Price = 29.99m,
                     TaxRate = 23,
-                    Category = categories[6],
+                    Category = categories[0],
                     PhotoId = null,
                     CreatedAt = DateTime.UtcNow,
                     ModificationDate = DateTime.UtcNow,
@@ -225,7 +203,7 @@ namespace Persistence
                     Description = "Description for Product 3",
                     Price = 39.99m,
                     TaxRate = 23,
-                    Category = categories[5],
+                    Category = categories[0],
                     PhotoId = null,
                     CreatedAt = DateTime.UtcNow,
                     ModificationDate = DateTime.UtcNow,
@@ -242,7 +220,7 @@ namespace Persistence
                     Description = "Description for Product 4",
                     Price = 49.99m,
                     TaxRate = 23,
-                    Category = categories[5],
+                    Category = categories[2],
                     PhotoId = null,
                     CreatedAt = DateTime.UtcNow,
                     ModificationDate = DateTime.UtcNow,
@@ -259,7 +237,7 @@ namespace Persistence
                     Description = "Description for Product 5",
                     Price = 59.99m,
                     TaxRate = 23,
-                    Category = categories[4],
+                    Category = categories[1],
                     PhotoId = null,
                     CreatedAt = DateTime.UtcNow,
                     ModificationDate = DateTime.UtcNow,
@@ -278,10 +256,10 @@ namespace Persistence
             //ProductsDiscounts
             var productDiscount = new ProductDiscount
             {
-                Value = 0.2m, 
+                Value = 0.2m,
                 Product = products[0],
-                Start = DateTime.UtcNow, 
-                End = DateTime.UtcNow.AddMonths(1) 
+                Start = DateTime.UtcNow,
+                End = DateTime.UtcNow.AddMonths(1)
             };
 
             context.ProductDiscounts.Add(productDiscount);
@@ -291,15 +269,15 @@ namespace Persistence
             {
                 new() {
                     CustomerDetails = users[0].CustomerDetails,
-                    OrderDate = DateTime.UtcNow, 
-                    Status = OrderStatus.New, 
+                    OrderDate = DateTime.UtcNow,
+                    Status = OrderStatus.New,
                     PaymentMethod = paymentMethods[0],
                     ShippingMethod = shippingMethods[0],
                     Items = new List<OrderItem>
                     {
                         new() {
                             Product = products[0],
-                            Quantity = 2 
+                            Quantity = 2
                         },
                         new() {
                             Product = products[1],
@@ -309,15 +287,15 @@ namespace Persistence
                 },
                 new() {
                     CustomerDetails = users[1].CustomerDetails,
-                    OrderDate = DateTime.UtcNow, 
-                    Status = OrderStatus.Processing, 
+                    OrderDate = DateTime.UtcNow,
+                    Status = OrderStatus.Processing,
                     PaymentMethod = paymentMethods[1],
                     ShippingMethod = shippingMethods[1],
                     Items = new List<OrderItem>
                     {
                         new() {
                             Product = products[1],
-                            Quantity = 2 
+                            Quantity = 2
                         },
                         new() {
                             Product = products[2],
