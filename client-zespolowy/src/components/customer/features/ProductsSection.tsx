@@ -12,7 +12,7 @@ export const ProductsSection = ({products, label}: Props) => {
 
     return (
         <div>
-            <h5>{label}</h5>
+            <h3>{label}</h3>
             <div className="row row-cols-2 row-cols-md-5 g-2">
             {products.map((product) => (
                 <div className="col" key={product.id}>
