@@ -62,12 +62,12 @@ export const ProductDetailsPage = observer(() => {
         return (
             Product.isOnSale(product) ? (
                 <>
-                    <h5 className="text-decoration-line-through">Net Price: {product.price} zł</h5>
-                    <h5>Discounted net price: {Product.getDiscountedPrice(product)} zł </h5>
+                    <h3 className="text-decoration-line-through">Net Price: {product.price} zł</h3>
+                    <h2>Net Price: <b className="new-color"> {Product.getDiscountedPrice(product)} zł  </b></h2>
                 </>
             ) : (
                 <>
-                    <h5>Net Price: {product.price} zł</h5>
+                    <h2>Net Price: <b className="new-color">{product.price} zł</b> </h2>
                 </>
             )
         )
@@ -105,12 +105,10 @@ export const ProductDetailsPage = observer(() => {
                         alt={product.name}
                     ></img>
                 </div>
-
                 <div className="col mt-5">
-            
-                    
-                        <h1>{product.name}</h1>
 
+
+                    <h1>{product.name}</h1>
 
                     <h5>Availability:
                         {product.status === ProductStatus.Available ?
@@ -119,31 +117,36 @@ export const ProductDetailsPage = observer(() => {
                             <b className="new-color"> Unavailable</b>
                         }
                     </h5>
-                    <h5>Tax rate: {product.taxRate === -1 ?<b className="new-color">Tax free</b>  : <b className="new-color">{product.taxRate} %</b>}</h5>
 
-                    {renderGrossPrice()}
+                    <h5>Tax rate:
+                        {product.taxRate === -1 ? <b className="new-color"> Tax free</b> : <b className="new-color"> {product.taxRate} %</b>}
+                    </h5>
+                    <div className="col mt-5 d-flex flex-column justify-content-center">
 
-                    {product.status === ProductStatus.Available &&
-                        <div className="row align-items-center justify-content-between mt-4">
-                            <div className="col-6">
-                                <div className="input-group mb-3">
-                                    <input type="number" min={1} max={product.productInfo.currentStock}
-                                        className="form-control" aria-describedby="basic-addon2" placeholder="Enter quantity"
-                                        value={quantity !== undefined ? quantity : ''}
-                                        onChange={(e) => {
-                                            const inputQuantity = Number(e.target.value);
-                                            const maxQuantity = product.productInfo.currentStock;
+                        {renderPrice()}
 
-                                            setQuantity(isNaN(inputQuantity) || inputQuantity <= 0 ? undefined : Math.min(inputQuantity, maxQuantity));
-                                        }}
-                                    />
-                                    <button className="btn btn-primary" type="button" disabled={!quantity}
-                                        onClick={() => handleAddToCart()}>Add to cart</button>
-                                    <FavouriteCheckBox productId={product.id} />
+                        {product.status === ProductStatus.Available &&
+                            <div className="row align-items-center justify-content-between mt-4">
+                                <div className="col-6">
+                                    <div className="input-group mb-3">
+                                        <input type="number" min={1} max={product.productInfo.currentStock}
+                                            className="form-control" aria-describedby="basic-addon2" placeholder="Enter quantity"
+                                            value={quantity !== undefined ? quantity : ''}
+                                            onChange={(e) => {
+                                                const inputQuantity = Number(e.target.value);
+                                                const maxQuantity = product.productInfo.currentStock;
+
+                                                setQuantity(isNaN(inputQuantity) || inputQuantity <= 0 ? undefined : Math.min(inputQuantity, maxQuantity));
+                                            }}
+                                        />
+                                        <button className="btn btn-primary" type="button" disabled={!quantity}
+                                            onClick={() => handleAddToCart()}>Add to cart</button>
+                                        <FavouriteCheckBox productId={product.id} />
+                                    </div>
                                 </div>
-                            </div>
-                        </div>}
+                            </div>}
 
+                    </div>
                 </div>
 
             </div>

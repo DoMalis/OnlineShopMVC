@@ -22,6 +22,9 @@ export const HomePage = observer(({title}: Props) => {
       <Helmet>
           <title>{title}</title>
       </Helmet>
+      <div class="container-fluid d-flex align-items-center justify-content-center">
+    <img src="https://www.themodelskit.co.uk/wp-content/uploads/2021/07/shutterstock_1845326779.jpg.webp" className="img-fluid" alt="Responsive image"/>
+</div>
       {isLoggedIn && !isAdmin && favouriteProducts.length > 0 &&
         <div className="m-3 p-3">
           <ProductsSection label="Your favorite products" products={favouriteProducts} />

@@ -11,10 +11,10 @@ export const Header = observer(() => {
     return (
         <>
             <header className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-between py-2 mb- border-bottom" style={{ backgroundColor: '#ecdefb' }}>
-                
+
                 <Link to="/" className="text-decoration-none">
-                    <h1 className="new-color mb-0">BeautyShop</h1>
-                </Link> 
+                    <h1 className="new-color mx-2 mb-0">BeautyShop</h1>
+                </Link>
 
                 {isLoggedIn && isAdmin &&
                     <ul className="nav col-12 col-lg-auto mb-2 justify-content-center mb-lg-0">
@@ -29,21 +29,21 @@ export const Header = observer(() => {
 
                 <div className="text-end">
                     {isLoggedIn && isAdmin
-                        ? 
-                            <div className="btn px-2">
-                                <div className="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <IconContext.Provider value={{ size: "20px" }}>
-                                        <FaUser /> Admin
-                                    </IconContext.Provider>
-                                </div>
-                                <ul className="dropdown-menu">
-                                    <li><div className="dropdown-item" onClick={logout}> Logout</div></li>
-                                </ul>
+                        ?
+                        <div className="btn px-2">
+                            <div className="nav-link dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                                <IconContext.Provider value={{ size: "20px" }}>
+                                    <FaUser /> Admin
+                                </IconContext.Provider>
                             </div>
-                        :   
-                            <span className="px-3">
-                                <Link to="login" className="btn btn-outline-primary me-2">Login</Link>
-                            </span> 
+                            <ul className="dropdown-menu">
+                                <li><div className="dropdown-item" onClick={logout}> Logout</div></li>
+                            </ul>
+                        </div>
+                        :
+                        <span className="px-3">
+                            <Link to="login" className="btn btn-outline-primary me-2">Login</Link>
+                        </span>
                     }
                 </div>
             </header>
