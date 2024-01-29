@@ -105,8 +105,8 @@ export const ProductDetailsPage = observer(() => {
                         alt={product.name}
                     ></img>
                 </div>
+                <div className="col mt-5">
 
-                <div className="col mt-5 d-flex flex-column justify-content-center">
 
                     <h1>{product.name}</h1>
 
@@ -121,30 +121,32 @@ export const ProductDetailsPage = observer(() => {
                     <h5>Tax rate:
                         {product.taxRate === -1 ? <b className="new-color">Tax free</b> : <b className="new-color">{product.taxRate} %</b>}
                     </h5>
+                    <div className="col mt-5 d-flex flex-column justify-content-center">
 
-                    {renderGrossPrice()}
+                        {renderGrossPrice()}
 
-                    {product.status === ProductStatus.Available &&
-                        <div className="row align-items-center justify-content-between mt-4">
-                            <div className="col-6">
-                                <div className="input-group mb-3">
-                                    <input type="number" min={1} max={product.productInfo.currentStock}
-                                        className="form-control" aria-describedby="basic-addon2" placeholder="Enter quantity"
-                                        value={quantity !== undefined ? quantity : ''}
-                                        onChange={(e) => {
-                                            const inputQuantity = Number(e.target.value);
-                                            const maxQuantity = product.productInfo.currentStock;
+                        {product.status === ProductStatus.Available &&
+                            <div className="row align-items-center justify-content-between mt-4">
+                                <div className="col-6">
+                                    <div className="input-group mb-3">
+                                        <input type="number" min={1} max={product.productInfo.currentStock}
+                                            className="form-control" aria-describedby="basic-addon2" placeholder="Enter quantity"
+                                            value={quantity !== undefined ? quantity : ''}
+                                            onChange={(e) => {
+                                                const inputQuantity = Number(e.target.value);
+                                                const maxQuantity = product.productInfo.currentStock;
 
-                                            setQuantity(isNaN(inputQuantity) || inputQuantity <= 0 ? undefined : Math.min(inputQuantity, maxQuantity));
-                                        }}
-                                    />
-                                    <button className="btn btn-primary" type="button" disabled={!quantity}
-                                        onClick={() => handleAddToCart()}>Add to cart</button>
-                                    <FavouriteCheckBox productId={product.id} />
+                                                setQuantity(isNaN(inputQuantity) || inputQuantity <= 0 ? undefined : Math.min(inputQuantity, maxQuantity));
+                                            }}
+                                        />
+                                        <button className="btn btn-primary" type="button" disabled={!quantity}
+                                            onClick={() => handleAddToCart()}>Add to cart</button>
+                                        <FavouriteCheckBox productId={product.id} />
+                                    </div>
                                 </div>
-                            </div>
-                        </div>}
+                            </div>}
 
+                    </div>
                 </div>
 
             </div>
