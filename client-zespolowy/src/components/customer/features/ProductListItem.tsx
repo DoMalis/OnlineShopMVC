@@ -14,9 +14,9 @@ export const ProductListItem = observer(({ product }: Props) => {
 
     const renderPrice = () => {
         if (isNetValue)
-            return renderNetPrice();
-        else 
-            return renderGrossPrice();
+        return renderGrossPrice();
+    else 
+    return renderNetPrice();
     }
 
 
