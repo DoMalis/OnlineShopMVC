@@ -106,11 +106,9 @@ export const ProductDetailsPage = observer(() => {
                     ></img>
                 </div>
 
-                <div className="col mt-5">
-            
-                    
-                        <h1>{product.name}</h1>
+                <div className="col mt-5 d-flex flex-column justify-content-center">
 
+                    <h1>{product.name}</h1>
 
                     <h5>Availability:
                         {product.status === ProductStatus.Available ?
@@ -119,7 +117,10 @@ export const ProductDetailsPage = observer(() => {
                             <b className="new-color"> Unavailable</b>
                         }
                     </h5>
-                    <h5>Tax rate: {product.taxRate === -1 ?<b className="new-color">Tax free</b>  : <b className="new-color">{product.taxRate} %</b>}</h5>
+
+                    <h5>Tax rate:
+                        {product.taxRate === -1 ? <b className="new-color">Tax free</b> : <b className="new-color">{product.taxRate} %</b>}
+                    </h5>
 
                     {renderGrossPrice()}
 
