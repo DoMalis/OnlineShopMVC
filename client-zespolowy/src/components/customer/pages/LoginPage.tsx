@@ -19,9 +19,13 @@ export const LoginPage = observer(({redirectTo = "/"}: Props) => {
             <Helmet>
                 <title>Login - BeautyShop</title>
             </Helmet>
-            <div className="p-4 col-lg-4 offset-lg-4">
-                <h3 className="text-center mb-5">Login to BeautyShop</h3>
-                <LoginForm />
+            <div className="text-center">
+                <div className="frame-container">
+                    <div className="p-4 col-lg-12">
+                        <h3 className="new-color text-center mb-5">Login to BeautyShop</h3>
+                        <LoginForm />
+                    </div>
+                </div>
             </div>
         </>
     )
