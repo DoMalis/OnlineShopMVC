@@ -16,8 +16,6 @@ export const CartPage = observer(() => {
   const {cartStore, userStore: {isNetValue, handleVauleWithTaxCheckBox}} = useStore();
   const {showLoginForm, cartItems, resetCart, showDialog, createOrder, setShowDialog, removeUnavailableItems} = cartStore;
 
-  if (showLoginForm) return <LoginPage redirectTo="/cart"/>
-
   const [reloadKey, setReloadKey] = useState(0);
   
   const handlePlaceOrder = () => {
@@ -31,6 +29,7 @@ export const CartPage = observer(() => {
     removeUnavailableItems();
     setReloadKey(prevKey => prevKey + 1);
   }
+  if (showLoginForm) return <LoginPage redirectTo="/cart"/>
 
   return (
     <div className="container">
