@@ -48,55 +48,55 @@ export const AddressForm = ({ onSubmit, address, buttonText }: Props) => {
                         return (
                             <Form>
                                 {/* Addrss Line 1 */}
-                                <div className="my-2">
+                                <b><div className="my-2">
                                     <TextInput 
                                         placeholder="Enter address"
                                         name="addressLine1"
                                         label="Address Line 1"
                                     />
-                                </div>
+                                </div></b>
 
                                 {/* Address Line 2 */}
-                                <div className="my-2">
+                                <b><div className="my-2">
                                     <TextInput
                                         placeholder="Enter address line 2"
                                         name="addressLine2"
                                         label="Address Line 2"
                                     />
-                                </div>
+                                </div></b>
 
                                 {/* City */}
-                                <div className="my-2">
+                                <b><div className="my-2">
                                     <TextInput
                                         placeholder="Enter city"
                                         name="city"
                                         label="City"
                                     />
-                                </div>
+                                </div></b>
 
                                 {/* Zip Code */}
-                                <div className="my-2">
+                                <b><div className="my-2">
                                     <TextInput
                                         placeholder="Enter zip code"
                                         name="zipCode"
                                         label="Zip Code"
                                     />
-                                </div>
+                                </div></b>
 
                                 {/* Country */}
-                                <div className="my-2">
+                                <b><div className="my-2">
                                     <TextInput
                                         placeholder="Enter country"
                                         name="country"
                                         label="Country"
                                     />
-                                </div>
+                                </div></b>
 
                                 {/* Button */}
                                 <div className="text-center my-4">
                                     <button
                                         type="submit"
-                                        className="btn btn-success"
+                                        className="btn btn-primary"
                                         disabled={!(dirty && isValid) || isSubmitting}
                                     >
                                     {buttonText}

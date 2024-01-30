@@ -26,8 +26,8 @@ export const LoginForm = observer(({customerLogin = true}: Props) => {
                     onSubmit={handleSubmit} 
                     autoComplete="off"
                 >
-                    <div className="my-2"><TextInput placeholder="Enter email" name="email" label="Email Address"/></div>
-                    <div className="my-2"><TextInput placeholder="Password" name="password" type="password" label="Password"/></div>
+                    <b><div className="my-2"><TextInput placeholder="Enter email" name="email" label="Email Address"/></div></b>
+                    <b><div className="my-2"><TextInput placeholder="Password" name="password" type="password" label="Password"/></div></b>
 
                     <div className="my-1">
                         <ErrorMessage 

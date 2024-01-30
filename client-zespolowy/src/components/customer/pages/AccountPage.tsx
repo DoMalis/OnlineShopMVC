@@ -28,47 +28,38 @@ export const AccountPage = observer(() => {
     return (
         <div>
             <Helmet>
-                <title>Account - OnlineShop</title>
+                <title>Account - BeautyShop</title>
             </Helmet>
-            <div className="row border-bottom pb-4 mb-5">
-                <div className="col-md-6 mt-4">
-                    <h3>Account details</h3>
+            <div className=" text-center">
+           
+            <div className="p-4 col-lg-6 offset-3">
+                    <h2>ACCOUNT DETAILS</h2>
                     <dl className="row list-group px-1">
-                        <dt className="col-sm-3">Username:</dt>
-                        <dd className="col-sm-9 list-group-item mx-2">{user.userName}</dd>
+                        <dt>Username:</dt>
+                        <dd className="list-group-item mx-2">{user.userName}</dd>
 
-                        <dt className="col-sm-3">Email:</dt>
-                        <dd className="col-sm-9 list-group-item mx-2">{user.email}</dd>
+                        <dt>Email:</dt>
+                        <dd className="list-group-item mx-2">{user.email}</dd>
 
-                        <dt className="col-sm-3">Discount:</dt>
-                        <dd className="col-sm-9 list-group-item mx-2">-{(accountDetails?.discountValue as number) * 100} %</dd>
+                        <dt >Discount:</dt>
+                        <dd className=" list-group-item mx-2">-{(accountDetails?.discountValue as number) * 100} %</dd>
 
-                        <dt className="col-sm-3">Newsletter:</dt>
-                        <dd className="col-sm-9 list-group-item mx-2">{accountDetails?.newsletter ? "yes" : "no"}</dd>
+                        <dt >Newsletter:</dt>
+                        <dd className=" list-group-item mx-2">{accountDetails?.newsletter ? "yes" : "no"}</dd>
                     </dl>
-                    <button className="btn btn-primary mt-4" onClick={logout}>Logout</button>
                 </div>
-                <div className="col-md-6 mt-4">
-                    <h3>Address information</h3>
-                    <AddressForm 
-                        onSubmit={handleAddressSubmit}
-                        address={accountDetails.address}
-                        buttonText="Update address"
-                    />
-                </div>         
-            </div>
-
-            <div className="row">
-
-                <div className="col-lg-5">
-                    <h3 className="mb-3">Orders</h3>
+                </div>
+                <div className="row">
+                <div className="p-4 col-lg-10 offset-1">
+                <div className="text-center">
+                    <h3 className="my-4">MY ORDERS</h3>
                     <table className="table table-bordered">
-                        <thead className="table-light">
+                        <thead className="table-primary">
                         <tr>
-                            <th>Order ID</th>
-                            <th>Date</th>
-                            <th>Status</th>
-                            <th style={{ width: "0", whiteSpace: "nowrap" }}></th>
+                            <th>ORDER ID</th>
+                            <th>DATE</th>
+                            <th>STATUS</th>
+                            <th style={{ width: "0", whiteSpace: "nowrap" }}>DETAILS</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -82,8 +73,8 @@ export const AccountPage = observer(() => {
                                     <td>{OrderStatus[order.status]}</td>
                                     <td>
                                         <div className="d-flex">
-                                            <Link to={`/order/${order.id}`} className="btn btn-primary btn-sm mx-2">
-                                                Details
+                                            <Link to={`/order/${order.id}`} className="btn btn-secondary btn-sm mx-2">
+                                                Show
                                             </Link>
                                         </div>
                                     </td>
@@ -92,30 +83,47 @@ export const AccountPage = observer(() => {
                         </tbody>
                     </table>
                 </div>
-
-                <div className="col-6 offset-1">
-                    <h3 className="mb-3">Settings</h3>
-                    
-                    <p className="fs-5">Net/Gross setting</p>
-                    <div className="form-check mx-3 my-3">
-                        <input className="form-check-input" 
-                            type="checkbox" 
-                            id="netValueCheckBox" 
-                            checked={isNetValue} 
-                            onChange={handleVauleWithTaxCheckBox}/>
-                        <label className="form-check-label" htmlFor="netValueCheckBox">
-                            Use net prices
-                        </label>
-                    </div>
-
-                    <p className="fs-5">Items per page setting</p>
-                    <div className="mx-3 my-3">
-                        <ItemsPerPage/>
-                    </div>
-                    
                 </div>
 
+
+
+                </div>
+                <div className="row">
+                    <div className="col-md-5 mt-3">
+                        <h3 className="text-center my-4">ADDRESS INFORMATION</h3>
+                        <AddressForm 
+                        onSubmit={handleAddressSubmit}
+                        address={accountDetails.address}
+                        buttonText="Update address"
+                        />
+                    </div>
+
+            <div className="col-md-5 offset-md-1 mt-3 ">
+                <h3 className="text-center mb-3 my-4">SETTINGS</h3>
+                
+                <p className="fs-5">Net/Gross setting</p>
+                <div className="form-check my-3">
+                <input
+                    className="form-check-input"
+                    type="checkbox"
+                    id="netValueCheckBox"
+                    checked={isNetValue}
+                    onChange={handleVauleWithTaxCheckBox}
+                />
+                <label className="form-check-label" htmlFor="netValueCheckBox">
+                    Use net prices
+                </label>
+                </div>
+
+                <p className="fs-5">Items per page setting</p>
+                <div className="my-3">
+                <ItemsPerPage/>
+                </div>
             </div>
+            </div>
+
+           
+           
         </div>
     )
 })
