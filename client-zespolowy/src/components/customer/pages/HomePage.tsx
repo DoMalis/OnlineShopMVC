@@ -26,17 +26,17 @@ export const HomePage = observer(({title}: Props) => {
     <img src="https://www.themodelskit.co.uk/wp-content/uploads/2021/07/shutterstock_1845326779.jpg.webp" className="img-fluid" alt="Responsive image"/>
 </div>
       {isLoggedIn && !isAdmin && favouriteProducts.length > 0 &&
-        <div className="m-3 p-3">
+        <div className="m-3 p-3 text-center">
           <ProductsSection label="Your favorite products" products={favouriteProducts} />
         </div>
       }
-      <div className="m-3 p-3">
+      <div className="m-3 p-3 text-center">
         <ProductsSection label="Bestsellers" products={topSoldProducts} />
       </div>
-      <div className="m-3 p-3">
+      <div className="m-3 p-3 text-center">
         <ProductsSection label="Discounted products" products={discountedProducts} />
       </div>
-      <div className="m-3 p-3">
+      <div className="m-3 p-3 text-center">
         <ProductsSection label="New products" products={newProducts} />
       </div>
     </div>
