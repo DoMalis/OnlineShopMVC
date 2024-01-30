@@ -11,7 +11,7 @@ export const CartPagePlaceOrder = observer(() => {
           {(isLoggedIn && !isAdmin) 
               ? 
                 <button 
-                  className="btn btn-primary btn-lg" 
+                  className="btn btn-primary" 
                   disabled={subbmiting} 
                   onClick={() => tryCreateOrder()}>
                     Place Order
