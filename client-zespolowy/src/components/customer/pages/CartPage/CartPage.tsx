@@ -35,7 +35,7 @@ export const CartPage = observer(() => {
   return (
     <div className="container">
       <Helmet>
-        <title>Cart - OnlineShop</title>
+        <title>Cart - BeautyShop</title>
       </Helmet>
       {showDialog && 
         <Dialog 
@@ -55,10 +55,10 @@ export const CartPage = observer(() => {
             onCancel={handleRemoveUnavailableItems}
         />
         }
-      <div className="row">
+      <div >
         {cartItems.length > 0 &&
         <>
-          <div className="col-lg-8">
+          <div >
             <CartPageItems key={reloadKey} cartItems={cartItems} resetCart={resetCart}/>
             <div className="form-check mt-3 mx-3">
               <input className="form-check-input" 
@@ -72,23 +72,28 @@ export const CartPage = observer(() => {
           </div>
           </div>
       
-          <div className="col-lg-4 border rounded py-3 px-3"
+          <div className="border rounded py-3 px-3"
             style={{marginTop: "53px"}}>
 
-              <div className="mt-2">
+<div className="d-flex">
+<div className="col-md-6 mt-2">
                 <CartPageSelectShipping />
               </div>
 
-              <div className="mt-4">
+              <div className="col-md-6 mt-2">
                 <CartPageSelectPayment />
               </div>
-
-              <div className="mt-5 pt-4">
-                <CartPageTotalValue />
-                <div className="d-grid">
-                  <CartPagePlaceOrder/>
-                </div>
-              </div>
+</div>
+<div className="d-flex">
+    <div className="col-md-6">
+      <CartPageTotalValue />
+    </div>
+    <div className="col-md-6 mt-4">
+      <div className="d-grid">
+        <CartPagePlaceOrder />
+      </div>
+    </div>
+  </div>
 
             </div>
         </>}
